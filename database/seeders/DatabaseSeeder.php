@@ -18,5 +18,15 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        \App\Models\Setting::create([
+            'ceo_name' => 'CEO Name',
+            'trainer_name' => 'Trainer Name',
+            'trainer_agency' => 'Trainer Agency',
+            'place' => 'Place',
+            'date' => '2003-01-07',
+            'ceo_signature' => 'dipta',
+            'trainer_signature' => 'athar',
+
+        ]);
     }
 }

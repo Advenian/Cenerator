@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PDFController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +17,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('test');
 });
+Route::get('/1', function () {
+    return view('certif1');
+});
+Route::get('/2', function () {
+    return view('certif2');
+});
+Route::get('pdf1', [PDFController::class, 'downloadPDF'])->name('download-pdf');
+Route::get('pdf2', [PDFController::class, 'downloadPDF2'])->name('download-pdf2');
+Route::get('setting/{setting}', [SettingController::class, 'edit'])->name('setting.edit');
+Route::get('setting', [SettingController::class, 'create'])->name('setting.create');
+Route::patch('setting/{setting}/patch', [SettingController::class, 'update'])->name('setting.update');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -28,4 +41,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
